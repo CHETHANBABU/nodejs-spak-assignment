@@ -11,7 +11,7 @@ node node_modules\db-migrate\bin\db-migrate up
 node node_modules\db-migrate\bin\db-migrate <file_name>
 
 ## Procedure - 1 to run the project in Debug mode
-1. import the `migration.sql` file in MySQL, which is under scripts
+1. import the `migration.sql` file in MySQL, which is under scripts folder
 2. Install typescript, as this project build on it - `npm install -g typescript`
 3. Install neccessary packages under project folder - `npm install`
 4. Open the project using VS code IDE
