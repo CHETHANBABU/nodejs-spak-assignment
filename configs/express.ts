@@ -5,7 +5,7 @@ import * as morgan from 'morgan';
 import * as bodyParser from 'body-parser';
 import * as nochache from 'nocache';
 import DBSetup from './db'; 
-import { AuthRoutes } from '../routes';
+import { AuthRoutes, TaskRoutes } from '../routes';
 // --- Vulnerability fixes
 const helmet = require('helmet');
 
@@ -94,6 +94,7 @@ class App {
 
     private routes(): void {
         new AuthRoutes(this.app);
+        new TaskRoutes(this.app);
     }
 
     private init(): void {

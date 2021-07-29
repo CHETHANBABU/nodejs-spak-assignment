@@ -32,10 +32,11 @@ class AuthService {
         return new Promise((resolve, reject) => {
             // check user existence
             UserModel.findOne({
-                where: filter
+                where: filter,
+                attributes: { exclude: ['password'] }
             }).then((user: any) => {
                 if (user) {
-                    resolve({ message: `${SUCCESS_MSG.USER_LOGIN}` });
+                    resolve({ message: `${SUCCESS_MSG.USER_LOGIN}`, data: user });
                 } else {
                     reject({ message: `${ERROR_MSG.USER_LOGIN}` });
                 }
