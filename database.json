@@ -1,0 +1,12 @@
+{
+  "defaultEnv": "dev",
+  "dev": {
+    "host": "localhost",
+    "database": "spak_task_assignment",
+    "driver": "mysql",
+    "multipleStatements": true,
+    "user": "root",
+    "password": "password"
+  },
+  "sql-file": true
+}
