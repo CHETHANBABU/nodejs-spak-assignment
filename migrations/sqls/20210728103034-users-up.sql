@@ -7,5 +7,10 @@ CREATE TABLE `users` (
   `password` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`));
 
-ALTER TABLE `spak_task_assignment`.`users` 
+ALTER TABLE `users` 
 ADD UNIQUE INDEX `email_UNIQUE` (`email` ASC);
+
+ALTER TABLE `users` 
+ADD COLUMN `lastName` VARCHAR(50) NULL AFTER `gender`,
+CHANGE COLUMN `name` `firstName` VARCHAR(50) NOT NULL,
+ADD COLUMN `mobile` VARCHAR(12) NOT NULL AFTER `lastName`;
