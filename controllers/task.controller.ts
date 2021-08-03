@@ -28,7 +28,7 @@ class TaskController {
 
     // retrieve the configured task
     retrieveTasks(req: Request, resp: Response) {
-        TaskService.getAll().then(data =>
+        TaskService.getAll(+req.params.id).then(data =>
             // handle success and return task data to client
             resp.status(200).send(data)
             , err => {

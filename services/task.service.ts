@@ -1,3 +1,4 @@
+const Sequelize = require('sequelize'), op = Sequelize.Op;
 import { TaskModel } from '../models/index';
 import { ERROR_MSG, SUCCESS_MSG } from '../utils/messages.constants';
 class TaskService {
@@ -19,19 +20,19 @@ class TaskService {
             const model = TaskModel.build(data);
             model.isNewRecord = false;
             model.save().then(data =>
-                resolve({ message: `${SUCCESS_MSG.TASK_CREATE}`, data: data })
+                resolve({ message: `${SUCCESS_MSG.TASK_UPDATE}`, data: data })
                 , err => {
                     // handle error
                     console.log(`AUDT:Task update - ${data.name}; ${err.message} : ${new Date()};ERROR`);
-                    reject({ message: `${ERROR_MSG.TASK_CREATE}` });
+                    reject({ message: `${ERROR_MSG.TASK_UPDATE}` });
                 });
         });
     }
 
     // return all tasks - isDelete: false 
-    getAll(): any {
+    getAll(id: number): any {
         return new Promise((resolve, reject) => {
-            TaskModel.findAll({ where: { isDeleted: false } }).then((_tasks: any) => {
+            TaskModel.findAll({ where: { [op.and]: [{ userId: id }, { isDeleted: false }] }  }).then((_tasks: any) => {
                 resolve({ data: _tasks });
             }, err => {
                 // handle error

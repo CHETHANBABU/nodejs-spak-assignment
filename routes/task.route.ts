@@ -7,8 +7,8 @@ export default class TaskRoutes {
     }
 
     private setupRoutes(app): void {
-      app.post(`/spak/task`, TaskController.setupTask);
-      app.get(`/spak/tasks`, TaskController.retrieveTasks);
+      app.post(`/spak/tasks`, TaskController.setupTask);
+      app.get(`/spak/tasks/:id`, TaskController.retrieveTasks);
       app.delete(`/spak/task/:id`, TaskController.deleteTask);
     }
 }
